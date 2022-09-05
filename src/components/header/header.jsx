@@ -1,5 +1,7 @@
 import { Component } from "react";
 import css from "./header-style.module.scss";
+import icon from "./images/symbol-defs.svg";
+
 
 class Header extends Component{ 
     // constructor(propos){
@@ -10,9 +12,18 @@ class Header extends Component{
         return(
             <header className={css.header}>
                 <div className={'container ' + css.container}>
-                    <nav>
-                        <h1>Filmoteka</h1>       
-                        <ul>
+                    <nav className={css.navigation}>
+                        <button className={css.logoButton}>
+                            <svg className={css.icon}>
+                                <use href={icon + '#icon-film'}></use>
+                            </svg>
+        
+                            <h1 className={css.title}>
+                                
+                                Filmoteka
+                            </h1>  
+                        </button>     
+                        <ul className={css.buttonList}>
                             <li>
                                 <button type="button">Home</button>
                             </li>
