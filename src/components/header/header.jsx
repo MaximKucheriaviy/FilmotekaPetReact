@@ -17,11 +17,7 @@ class Header extends Component{
                             <svg className={css.icon}>
                                 <use href={icon + '#icon-film'}></use>
                             </svg>
-        
-                            <h1 className={css.title}>
-                                
-                                Filmoteka
-                            </h1>  
+                            <h1 className={css.title}>Filmoteka</h1>  
                         </button>     
                         <ul className={css.buttonList}>
                             <li>
@@ -31,7 +27,7 @@ class Header extends Component{
                         </ul>
                     </nav>
                     {this.props.formType === "SearchForm" ?
-                    <form action="">
+                    <form className={css.searchForm} action="">
                         <input type="text" />
                         <button type="submit">submit</button>
                     </form>   

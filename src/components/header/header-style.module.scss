@@ -1,5 +1,6 @@
 .header{
     padding-top: 40px;
+    height: 230px; 
 
     background-color: #272e34;
     background-repeat: no-repeat;
@@ -7,16 +8,14 @@
     background-position: top left, top right;
 
     @media screen and (min-width: 768px) {
+        height: 216px;
         background-image: url('./images/bacground-image2-left.jpg'), url('./images/bacground-image2-right.jpg');
     }
     @media screen and (min-width: 1280px) {
         background-image: url('./images/bacground-image1-left.jpg'), url('./images/bacground-image1-right.jpg');
     }
     & .container{
-        height: 230px;  
-        @media screen and (min-width: 768px) {
-            height: 216px;
-        }  
+        
     }
 
     & .logoButton{
@@ -73,6 +72,25 @@
             line-height: 14px;
             text-transform: uppercase;
             color: white;
+        }
+    }
+
+    & .searchForm{
+        margin-top: 54px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 280px;
+        @media screen and (min-width: 768px) {
+            width: 336px;
+        }
+        @media screen and (min-width: 1280px) {
+            width: 394px;
+        }
+        & input{
+            width: 100%;
+            background-color: transparent;
+            border: none;
+            border-bottom: 0.5px solid white;
         }
     }
 }
