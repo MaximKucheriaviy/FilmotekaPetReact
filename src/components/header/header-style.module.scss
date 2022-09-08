@@ -14,9 +14,6 @@
     @media screen and (min-width: 1280px) {
         background-image: url('./images/bacground-image1-left.jpg'), url('./images/bacground-image1-right.jpg');
     }
-    & .container{
-        
-    }
 
     & .logoButton{
         display: inline-flex;
@@ -76,6 +73,7 @@
     }
 
     & .searchForm{
+        position: relative;
         margin-top: 54px;
         margin-left: auto;
         margin-right: auto;
@@ -91,6 +89,16 @@
             background-color: transparent;
             border: none;
             border-bottom: 0.5px solid white;
+        }
+        & button{
+            position: absolute;
+            top: 0;
+            right: 0;
+            & svg{
+                width: 20px;
+                height: 20px;
+                fill: white;
+            }
         }
     }
 }

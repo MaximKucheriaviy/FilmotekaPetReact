@@ -29,7 +29,11 @@ class Header extends Component{
                     {this.props.formType === "SearchForm" ?
                     <form className={css.searchForm} action="">
                         <input type="text" />
-                        <button type="submit">submit</button>
+                        <button type="submit">
+                            <svg>
+                                <use href={icon + "#icon-search"}></use>
+                            </svg>
+                        </button>
                     </form>   
                     :
                     <div>
