@@ -1,6 +1,7 @@
 import { Component } from "react";
 import css from "./header-style.module.scss";
 import icon from "./images/symbol-defs.svg";
+import Button from "../button/Button";
 
 
 class Header extends Component{ 
@@ -8,7 +9,6 @@ class Header extends Component{
     //     super(propos);
     // }
     render(){
-        console.log(css);
         return(
             <header className={css.header}>
                 <div className={'container ' + css.container}>
@@ -36,12 +36,10 @@ class Header extends Component{
                         </button>
                     </form>   
                     :
-                    <div>
-                        <ul>
-                            <li><button type="button">Watched</button></li>
-                            <li><button type="button">Queue</button></li>     
-                        </ul>
-                    </div> 
+                    <ul className={css.libButtonList}>
+                        <li><Button text={"Watched"} boxShape={css.buttonBox} themeType={true}/></li>
+                        <li><Button text={"Qeuee"} boxShape={css.buttonBox} themeType={true} shadowed={true} isActive={true}/></li>     
+                    </ul>
                     }
                 </div>
             </header>
