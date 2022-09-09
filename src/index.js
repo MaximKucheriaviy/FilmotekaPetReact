@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.scss';
 import App from './App';
 
+import TMDB from './js/themoviedbAPI';
+
+const api = new TMDB("1cdff00a9c2b2133227357e455cd1931");
+api.getTrendings();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
