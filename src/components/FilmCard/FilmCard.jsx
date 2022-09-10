@@ -9,7 +9,7 @@ class FilmCard extends Component{
                     <img src={this.props.poster} alt="Poster" />
                 </div>
                 <h3>{this.props.title}</h3>
-                <p>{this.props.janres} | {this.props.year}</p>
+                <p>{this.props.genre_ids} | {this.props.release_date}</p>
             </button>
         )
     }
