@@ -5,9 +5,6 @@ import FilmList from "./components/FilmList/FilmList";
 import TMDB from './js/themoviedbAPI';
 const api = new TMDB("1cdff00a9c2b2133227357e455cd1931");
 
-
-
-api.getTrendings();
 class App extends Component {
   constructor(props){
     super(props);
@@ -16,7 +13,16 @@ class App extends Component {
     }
   }
   componentDidMount(){
-    
+    api.getTrendings()
+    .then(data => {
+      console.log(data);
+      this.setState({
+        filmsArray: data.results
+      })
+    })
+    .catch(error => {
+      console.log(error);
+    })
   }
   render(){
     return (
@@ -24,7 +30,7 @@ class App extends Component {
         <Header type={"autorised"} formType={"SearchasdForm"}/>
         <section>
             <h2>Film list</h2>
-            {/* <FilmList/> */}
+            <FilmList films={this.state.filmsArray}/>
         </section>
       </div>
     );
