@@ -1,40 +1,39 @@
-import { Component } from "react";
+import "./index.scss"
+// import TMDB from './js/themoviedbAPI';
+import { useState } from "react";
+import { Header } from "./components/header/header";
+import { AutorisationModal } from "./components/AutorisationModal/AutorisationModal";
 
-import Header from "./components/header/header";
-import FilmList from "./components/FilmList/FilmList";
-import TMDB from './js/themoviedbAPI';
-const api = new TMDB("1cdff00a9c2b2133227357e455cd1931");
+// const api = new TMDB("1cdff00a9c2b2133227357e455cd1931");
 
-class App extends Component {
-  constructor(props){
-    super(props);
-    this.state={
-      filmsArray: []
-    }
+export const App = () => {
+  const [isAutorised, setIsAutorised] = useState(false);
+  const [userData, setUserData] = useState({});
+  const [loginModalToggle, setLoginModalToggle] = useState(false);
+
+  const setLogedUser = (userData) => {
+    setIsAutorised(true);
+    setUserData(userData);
+    setLoginModalToggle(false);
   }
-  componentDidMount(){
-    api.getTrendings()
-    .then(data => {
-      console.log(data);
-      this.setState({
-        filmsArray: data.results
-      })
-    })
-    .catch(error => {
-      console.log(error);
-    })
+
+  const removeLogedUser = () => {
+    setIsAutorised(false);
+    setUserData({});
   }
-  render(){
-    return (
-      <div className="App">
-        <Header type={"autorised"} formType={"SearchasdForm"}/>
-        <section>
-            <h2>Film list</h2>
-            <FilmList films={this.state.filmsArray}/>
-        </section>
-      </div>
-    );
-    }
+
+  return (
+    <div className="App">
+      <Header isAutorised={isAutorised} 
+        setLoginModalToggle={setLoginModalToggle}
+        userName={userData.email}
+        removeLogedUser={removeLogedUser}
+      />
+      {loginModalToggle && <AutorisationModal 
+        setLoginModalToggle={setLoginModalToggle}
+        setLogedUser={setLogedUser}
+      />}
+    </div>
+  )
 }
 
-export default App;

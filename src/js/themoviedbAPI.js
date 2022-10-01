@@ -54,7 +54,7 @@ class TMDB {
                 console.error("Error in getGenres")
                 console.log(err);
             }
-            console.log(this.genders);
+            //console.log(this.genders);
         }
     }
     transfomGenders(arr = []){
