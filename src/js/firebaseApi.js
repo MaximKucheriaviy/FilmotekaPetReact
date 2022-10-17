@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword  } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword  } from "firebase/auth";
 
 
 const firebaseConfig = {
@@ -19,6 +19,18 @@ const auth = getAuth(app);
 export const singIn = async (email, password) => {
     try{
         const userCredential = await signInWithEmailAndPassword(auth, email, password);
+        return userCredential.user;
+    }
+    catch(error){
+        //const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorMessage);
+    };
+}
+
+export const singUp = async (email, password) => {
+    try{
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
         return userCredential.user;
     }
     catch(error){
