@@ -1,18 +1,17 @@
 import { SearchForm } from "../SearchForm/SearchForm"
 import { useState } from "react"
 import { NavLink, useLocation } from "react-router-dom";
+import { HeaderStyled } from "./headerStyled";
 
-export const Header = ({isAutorised, userName, removeLogedUser}) => {
-    const [libraryTogle, setLibraryTogle] = useState(false);
+export const Header = ({isAutorised, userName, removeLogedUser, libraryTogle}) => {
     const location = useLocation();
     const logoutHendloer = () => {
         removeLogedUser();
-        setLibraryTogle(false);
     }
     return(
-        <header>
+        <HeaderStyled>
             <h1>Filmoteka</h1>
-            <button type="button" onClick={() => setLibraryTogle(false)}>home</button>
+            <NavLink to="/">home</NavLink>
             {isAutorised ? 
                 <NavLink to="/library">my library</NavLink> :
                 <>
@@ -21,8 +20,7 @@ export const Header = ({isAutorised, userName, removeLogedUser}) => {
                 </>
             }
             {isAutorised && <button type="button" onClick={logoutHendloer}>{"Log Out " + userName}</button>}
-            {libraryTogle ? <button type="button">wached</button> : <SearchForm/>}
-            
-        </header>
+            {libraryTogle ? <button type="button">wached</button> : <SearchForm/>}    
+        </HeaderStyled>
     )
 }
