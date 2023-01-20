@@ -1,5 +1,5 @@
 import { SearchForm } from "../SearchForm/SearchForm"
-import { NavLink, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { HeaderStyled, HeaderContainer, Logo, NavButton } from "./headerStyled";
 import icons from "./images/symbol-defs.svg"
 

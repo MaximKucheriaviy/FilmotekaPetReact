@@ -4,6 +4,8 @@ import image1Left from "./images/bacground-image3-left.jpg"
 import image1Right from "./images/bacground-image3-right.jpg"
 import image2Left from "./images/bacground-image2-left.jpg"
 import image2Right from "./images/bacground-image2-right.jpg"
+import image3Left from "./images/bacground-image1-left.jpg"
+import image3Right from "./images/bacground-image1-right.jpg"
 import { NavLink } from "react-router-dom"
 
 export const HeaderStyled = styled.header`
@@ -16,8 +18,24 @@ export const HeaderStyled = styled.header`
         background-image: url(${image2Left}), url(${image2Right});
         height: 216px;
     }
+    @media screen and (min-width: 1280px){
+        background-image: url(${image3Left}), url(${image3Right});
+        height: 216px;
+    }
     & h1{
         display: none;
+        
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 35px;
+        color: white;
+
+        margin-left: 10px;
+        @media screen and (min-width: 768px){
+            display: inline-block;
+        }
     }
     & nav ul{
         display: flex;
@@ -26,11 +44,13 @@ export const HeaderStyled = styled.header`
     & .topLine{
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
 `
 
 export const HeaderContainer = styled(Container)`
-    
+    padding-left: 32px;
+    padding-right: 32px;
 `
 
 export const Logo = styled.div`

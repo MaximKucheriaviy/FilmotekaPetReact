@@ -1,4 +1,6 @@
 import { useState } from "react"
+import { StyledSearchForm } from "./SerchFormStyled";
+import { AiOutlineSearch } from 'react-icons/ai';
 export const SearchForm = () => {
 
     const [keyword, setKeyWord] = useState("");
@@ -7,7 +9,7 @@ export const SearchForm = () => {
         setKeyWord(value);
     }
     return(
-        <form>
+        <StyledSearchForm>
             <input 
                 type="text"
                 name="search"
@@ -15,7 +17,7 @@ export const SearchForm = () => {
                 onChange={chageHendler}
                 value={keyword}
             />
-            <button type="submit">submit</button>
-        </form>
+            <button type="submit"><AiOutlineSearch className="search-icon" color="white"/></button>
+        </StyledSearchForm>
     )
 }
