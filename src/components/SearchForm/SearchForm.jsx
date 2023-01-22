@@ -16,6 +16,7 @@ export const SearchForm = () => {
                 id="search" 
                 onChange={chageHendler}
                 value={keyword}
+                placeholder="Movie search"
             />
             <button type="submit"><AiOutlineSearch className="search-icon" color="white"/></button>
         </StyledSearchForm>

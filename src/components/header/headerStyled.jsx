@@ -46,11 +46,28 @@ export const HeaderStyled = styled.header`
         justify-content: space-between;
         align-items: center;
     }
+
+    & .search-error{
+        text-align: center;
+        margin-top: 20px;
+
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: #FF001B;
+    }
 `
 
 export const HeaderContainer = styled(Container)`
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 20px;
+    padding-right: 20px;
+    @media screen and (min-width: 768px){
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+    
 `
 
 export const Logo = styled.div`

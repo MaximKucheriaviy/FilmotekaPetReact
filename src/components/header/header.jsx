@@ -1,11 +1,13 @@
 import { SearchForm } from "../SearchForm/SearchForm"
 import { useLocation } from "react-router-dom";
 import { HeaderStyled, HeaderContainer, Logo, NavButton } from "./headerStyled";
+import { useState } from "react";
 import icons from "./images/symbol-defs.svg"
 
 
 export const Header = ({isAutorised, userName, removeLogedUser, libraryTogle}) => {
     const location = useLocation();
+    const [serarchError] = useState(true);
     const logoutHendloer = () => {
         removeLogedUser();
     }
@@ -38,7 +40,8 @@ export const Header = ({isAutorised, userName, removeLogedUser, libraryTogle}) =
                 
                 
                 {isAutorised && <button type="button" onClick={logoutHendloer}>{"Log Out " + userName}</button>}
-                {libraryTogle ? <button type="button">wached</button> : <SearchForm/>}    
+                {libraryTogle ? <button type="button">wached</button> : <SearchForm/>} 
+                {serarchError && <p className="search-error">Search result not successful. Enter the correct movie name and </p>}
             </HeaderContainer>
         </HeaderStyled>
     )
