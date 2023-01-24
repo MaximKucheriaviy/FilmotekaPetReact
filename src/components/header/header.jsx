@@ -12,7 +12,7 @@ export const Header = ({isAutorised, userName, removeLogedUser, libraryTogle}) =
         removeLogedUser();
     }
     return(
-        <HeaderStyled>
+        <HeaderStyled libraryTogle={libraryTogle}>
             <HeaderContainer>
                 <div className="topLine">
                     <Logo>

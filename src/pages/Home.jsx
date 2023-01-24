@@ -6,6 +6,7 @@ export const Home = ({isAutorised, userData, removeLogedUser}) => {
             isAutorised={isAutorised} 
             userName={userData.email}
             removeLogedUser={removeLogedUser}
+            libraryTogle={false}
         />
         <Outlet/>
     </>
