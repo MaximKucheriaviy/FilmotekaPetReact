@@ -1,13 +1,14 @@
 import { SearchForm } from "../SearchForm/SearchForm"
 import { useLocation } from "react-router-dom";
-import { HeaderStyled, HeaderContainer, Logo, NavButton } from "./headerStyled";
+import { HeaderStyled, HeaderContainer, Logo, NavButton, UserInfoButton } from "./headerStyled";
+import { HeaderButtons } from "../HeaderButtons/HeaderButtons";
 import { useState } from "react";
 import icons from "./images/symbol-defs.svg"
 
 
-export const Header = ({isAutorised, userName, removeLogedUser, libraryTogle}) => {
-    const location = useLocation();
-    const [serarchError] = useState(true);
+export const Header = ({isAutorised, userName, removeLogedUser, libraryTogle, setLoginFormTriger, setSignupFormTriger}) => {
+    // const location = useLocation();
+    const [serarchError] = useState(false);
     const logoutHendloer = () => {
         removeLogedUser();
     }
@@ -30,8 +31,8 @@ export const Header = ({isAutorised, userName, removeLogedUser, libraryTogle}) =
                             {isAutorised ? 
                             <li><NavButton to="/library">my library</NavButton></li> :
                             <>
-                                <li><NavButton to="/singIn" state={{from: location}}>sing in</NavButton></li>
-                                <li><NavButton to="/logIn" state={{from: location}}>log in</NavButton></li>
+                                <li><UserInfoButton onClick={() => setSignupFormTriger(true)} >sing in</UserInfoButton></li>
+                                <li><UserInfoButton onClick={() => setLoginFormTriger(true)} >log in</UserInfoButton></li>
                             </>
                             }
                         </ul>
@@ -40,8 +41,8 @@ export const Header = ({isAutorised, userName, removeLogedUser, libraryTogle}) =
                 
                 
                 {isAutorised && <button type="button" onClick={logoutHendloer}>{"Log Out " + userName}</button>}
-                {libraryTogle ? <button type="button">wached</button> : <SearchForm/>} 
-                {serarchError && <p className="search-error">Search result not successful. Enter the correct movie name and </p>}
+                {libraryTogle ? <HeaderButtons/> : <SearchForm/>} 
+                {serarchError && !libraryTogle && <p className="search-error">Search result not successful. Enter the correct movie name and </p>}
             </HeaderContainer>
         </HeaderStyled>
     )
