@@ -57,7 +57,8 @@ export const LoginForm = ({ setLoginFormTriger, loginTriger }) => {
         if (token) {
             setLoginFormTriger(false);
         }
-    }, [setLoginFormTriger, token]);
+        dispatch(resetLoginError());
+    }, [setLoginFormTriger, token, dispatch]);
 
     return createPortal(<div className="overlay">
         <LoginFormStyled>
