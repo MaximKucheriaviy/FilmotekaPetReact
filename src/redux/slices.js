@@ -1,24 +1,25 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { signUpUser } from "./operrations";
+import { signUpUser, loginUser } from "./operrations";
+
 
 function userInitialState() {
-    const data = window.sessionStorage.getItem('userData');
-    if (!data) {
+    const token = window.sessionStorage.getItem('userToken');
+    if (!token) {
         return {
-            data: {},
+            token: "",
             isLoading: false,
             error: null
         }
     }
     return {
-        data: JSON.parse(data),
+        token,
         isLoading: false,
         error: null
     }
 }
 
 export const userSlice = createSlice({
-    name: "users",
+    name: "user",
     initialState: userInitialState(),
     extraReducers: {
         [signUpUser.pending](state, action){
@@ -27,12 +28,28 @@ export const userSlice = createSlice({
         },
         [signUpUser.fulfilled](state, action){
             state.isLoading = false;
-            state.data = action.payload;
+            state.token = action.payload.token;
+            sessionStorage.setItem("userToken", action.payload.token);
             state.error = null;
         },
         [signUpUser.rejected](state, action){
             state.isLoading = false;
-            state.data = {};
+            state.token = "";
+            state.error = action.payload;
+        },
+        [loginUser.pending](state, action){
+            state.isLoading = true;
+            state.error = null;
+        },
+        [loginUser.fulfilled](state, action){
+            state.isLoading = false;
+            state.token = action.payload.token;
+            sessionStorage.setItem("userToken", action.payload.token);
+            state.error = null;
+        },
+        [loginUser.rejected](state, action){
+            state.isLoading = false;
+            state.token = "";
             state.error = action.payload;
         }
     }

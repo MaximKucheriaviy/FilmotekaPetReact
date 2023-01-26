@@ -3,12 +3,14 @@ import { useLocation } from "react-router-dom";
 import { HeaderStyled, HeaderContainer, Logo, NavButton, UserInfoButton } from "./headerStyled";
 import { HeaderButtons } from "../HeaderButtons/HeaderButtons";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import icons from "./images/symbol-defs.svg"
 
 
-export const Header = ({isAutorised, userName, removeLogedUser, libraryTogle, setLoginFormTriger, setSignupFormTriger}) => {
+export const Header = ({userName, removeLogedUser, libraryTogle, setLoginFormTriger, setSignupFormTriger}) => {
     // const location = useLocation();
     const [serarchError] = useState(false);
+    const token = useSelector(state => state.user.token);
     const logoutHendloer = () => {
         removeLogedUser();
     }
@@ -28,8 +30,12 @@ export const Header = ({isAutorised, userName, removeLogedUser, libraryTogle, se
                             <li>
                                 <NavButton to="/">home</NavButton>
                             </li>
-                            {isAutorised ? 
-                            <li><NavButton to="/library">my library</NavButton></li> :
+                            {token ? 
+                            <>
+                                <li><NavButton to="/library">my library</NavButton></li> 
+                                <UserInfoButton type="button" onClick={logoutHendloer}>Log Out</UserInfoButton>
+                            </>
+                            :
                             <>
                                 <li><UserInfoButton onClick={() => setSignupFormTriger(true)} >sing in</UserInfoButton></li>
                                 <li><UserInfoButton onClick={() => setLoginFormTriger(true)} >log in</UserInfoButton></li>
@@ -38,9 +44,6 @@ export const Header = ({isAutorised, userName, removeLogedUser, libraryTogle, se
                         </ul>
                     </nav>
                 </div>
-                
-                
-                {isAutorised && <button type="button" onClick={logoutHendloer}>{"Log Out " + userName}</button>}
                 {libraryTogle ? <HeaderButtons/> : <SearchForm/>} 
                 {serarchError && !libraryTogle && <p className="search-error">Search result not successful. Enter the correct movie name and </p>}
             </HeaderContainer>

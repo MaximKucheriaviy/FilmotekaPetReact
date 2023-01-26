@@ -3,7 +3,8 @@ import { signUpUser } from "../../redux/operrations";
 import { useDispatch } from "react-redux";
 import { createPortal } from "react-dom";
 import { nanoid } from "nanoid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 
 const modalRoot = document.querySelector('#modal-root')
@@ -17,6 +18,8 @@ export const LoginForm = ({ setLoginFormTriger, loginTriger }) => {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+
+    const token = useSelector((state) => state.user.token);
 
     const dispatch = useDispatch();
 
@@ -42,6 +45,12 @@ export const LoginForm = ({ setLoginFormTriger, loginTriger }) => {
                 return;
         }
     }
+
+    useEffect(() => {
+        if(token){
+            setLoginFormTriger(false);
+        }
+    }, [setLoginFormTriger, token]);
 
     return createPortal(<div className="overlay">
         <LoginFormStyled>
