@@ -11,9 +11,22 @@ export const  LoginFormStyled = styled.form`
     & h2{
         font-weight: 900;
         /* font-size: 20px; */
+       
+    }
+
+    & .topBlock{
         border-bottom: 1px solid black;
         margin-bottom: 40px;
         padding-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    & .errorMessage{
+        color: red;
+        font-size: 14px;
+        font-weight: 800;
     }
 
     & input{

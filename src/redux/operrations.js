@@ -10,7 +10,7 @@ export const signUpUser = createAsyncThunk("user/signup", async(data, thunkAPI) 
         return response.data;
     }
     catch(err){
-        thunkAPI.rejectWithValue("User creation error");
+        return thunkAPI.rejectWithValue("User creation error");
     }
 })
 
@@ -21,6 +21,7 @@ export const loginUser = createAsyncThunk("user/login", async(data, thunkAPI) =>
         return response.data;
     }
     catch(err){
-        thunkAPI.rejectWithValue("User login error");
+        const {response} = err;
+        return thunkAPI.rejectWithValue(response.data.message);
     }
 })

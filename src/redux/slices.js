@@ -21,6 +21,11 @@ function userInitialState() {
 export const userSlice = createSlice({
     name: "user",
     initialState: userInitialState(),
+    reducers: {
+        resetLoginError(state){
+            state.error = null;
+        }
+    },
     extraReducers: {
         [signUpUser.pending](state, action){
             state.isLoading = true;
@@ -54,3 +59,5 @@ export const userSlice = createSlice({
         }
     }
 })
+
+export const {resetLoginError} = userSlice.actions;
