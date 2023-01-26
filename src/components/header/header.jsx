@@ -32,7 +32,7 @@ export const Header = ({libraryTogle, setLoginFormTriger, setSignupFormTriger}) 
                     <nav>
                         <ul>
                             <li>
-                                <NavButton to="/">home</NavButton>
+                                <NavButton to="/" end>home</NavButton>
                             </li>
                             {token ? 
                             <>

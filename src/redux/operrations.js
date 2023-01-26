@@ -28,11 +28,13 @@ export const loginUser = createAsyncThunk("user/login", async(data, thunkAPI) =>
 
 export const logoutUser = createAsyncThunk("user/logout", async(data, thunkAPI) => {
     try{
-        const response = await axios.post("/users/login", data, {
-            headers:{
-                authorization: data.token
+        const response = await axios({
+            method: 'post',
+            url: "/users/logout",
+            headers: {
+                'Authorization': data
             }
-        });
+        })
         return response.data;
     }
     catch(err){
