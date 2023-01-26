@@ -1,18 +1,22 @@
 import { SearchForm } from "../SearchForm/SearchForm"
-import { useLocation } from "react-router-dom";
+// import { useLocation } from "react-router-dom";
 import { HeaderStyled, HeaderContainer, Logo, NavButton, UserInfoButton } from "./headerStyled";
 import { HeaderButtons } from "../HeaderButtons/HeaderButtons";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import icons from "./images/symbol-defs.svg"
+import { logoutUser } from "../../redux/operrations";
+import { useDispatch } from "react-redux";
 
 
-export const Header = ({userName, removeLogedUser, libraryTogle, setLoginFormTriger, setSignupFormTriger}) => {
+export const Header = ({libraryTogle, setLoginFormTriger, setSignupFormTriger}) => {
     // const location = useLocation();
     const [serarchError] = useState(false);
     const token = useSelector(state => state.user.token);
+    const dispatch = useDispatch();
+
     const logoutHendloer = () => {
-        removeLogedUser();
+        dispatch(logoutUser(token));
     }
     return(
         <HeaderStyled libraryTogle={libraryTogle}>

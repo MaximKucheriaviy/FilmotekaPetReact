@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { signUpUser, loginUser } from "./operrations";
+import { signUpUser, loginUser, logoutUser } from "./operrations";
 
 
 function userInitialState() {
@@ -55,6 +55,20 @@ export const userSlice = createSlice({
         [loginUser.rejected](state, action){
             state.isLoading = false;
             state.token = "";
+            state.error = action.payload;
+        },
+        [logoutUser.pending](state, action){
+            state.isLoading = true;
+            state.error = null;
+        },
+        [logoutUser.fulfilled](state, action){
+            state.isLoading = false;
+            state.token = "";
+            sessionStorage.removeItem("userToken");
+            state.error = null;
+        },
+        [logoutUser.rejected](state, action){
+            state.isLoading = false;
             state.error = action.payload;
         }
     }

@@ -25,3 +25,18 @@ export const loginUser = createAsyncThunk("user/login", async(data, thunkAPI) =>
         return thunkAPI.rejectWithValue(response.data.message);
     }
 })
+
+export const logoutUser = createAsyncThunk("user/logout", async(data, thunkAPI) => {
+    try{
+        const response = await axios.post("/users/login", data, {
+            headers:{
+                authorization: data.token
+            }
+        });
+        return response.data;
+    }
+    catch(err){
+        const {response} = err;
+        return thunkAPI.rejectWithValue(response.data.message);
+    }
+})

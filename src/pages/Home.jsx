@@ -6,10 +6,7 @@ export const Home = ({isAutorised, userData, removeLogedUser}) => {
     const [loginFormTriger, setLoginFormTriger] = useState(false); 
     const [signupFormTriger, setSignupFormTriger] = useState(false);
     return<>
-        <Header 
-            isAutorised={isAutorised} 
-            userName={userData.email}
-            removeLogedUser={removeLogedUser}
+        <Header
             setLoginFormTriger={setLoginFormTriger}
             setSignupFormTriger={setSignupFormTriger}
         />
