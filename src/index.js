@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-// import './index.scss';
+import "./index.scss"
 import { App } from './App';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './redux/store';
 
 import TMDB from './js/themoviedbAPI';
+
 
 const api = new TMDB("1cdff00a9c2b2133227357e455cd1931");
 api.getTrendings();

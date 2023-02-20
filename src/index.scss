@@ -26,6 +26,12 @@ h1, h2, h3, p{
 }
 
 ol, ul{
+  list-style: n;
+  padding: 0;
+  margin: 0;
+}
+
+li{
   list-style: none;
   padding: 0;
   margin: 0;
@@ -70,3 +76,8 @@ ol, ul{
   align-items: center;
   
 }
+
+img{
+  max-width: 100%;
+}
+
