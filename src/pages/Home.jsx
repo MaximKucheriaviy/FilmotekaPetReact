@@ -2,6 +2,7 @@ import { Header } from "../components/header/header"
 import { useState, useEffect, useCallback } from "react"
 import { LoginForm } from "../components/loginForm/LoginForm"
 import { FilmList } from "../components/filmList/FilmList";
+import { PaginationSystem } from "../components/paginationControl/PaginationControl";
 import TMDB from '../js/themoviedbAPI';
 
 
@@ -11,10 +12,12 @@ export const Home = ({isAutorised, userData, removeLogedUser}) => {
     const [loginFormTriger, setLoginFormTriger] = useState(false); 
     const [signupFormTriger, setSignupFormTriger] = useState(false);
     const [cards, setCards] = useState([]);
+    const [totalPages, setTotalPages] = useState(null);
 
     const getFimesToCards = useCallback(async () => {
         const result = await api.getTrendings();
         setCards(result.results)
+        setTotalPages(result.total_pages)
     }, []);
 
     useEffect(() => {
@@ -30,6 +33,7 @@ export const Home = ({isAutorised, userData, removeLogedUser}) => {
         {signupFormTriger && <LoginForm setLoginFormTriger={setSignupFormTriger}/>}
         <div className="container">
             <FilmList cards={cards}/>
+            <PaginationSystem/>
         </div>
     </>
 }
