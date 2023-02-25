@@ -28,7 +28,7 @@ export const Card = styled.div`
     @media screen and (min-width: 768px) {
       height: 455px;
     }
-    @media screen and (min-width: 768px) {
+    @media screen and (min-width: 1280px) {
       height: 574px;
     }
   }

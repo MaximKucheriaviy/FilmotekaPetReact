@@ -2,10 +2,11 @@ import { StyledPagination } from "./PaginationControlStyld";
 import {ReactComponent as LefrArrow} from "./assets/arrowLeft.svg";
 import {ReactComponent as RigntArrow} from "./assets/arrowRight.svg"
 import { useWindowSize } from "../../secvices/hooks/useWindowSize";
+import { PaginationDescTop } from "./PaginationDectop";
 
 
 
-export const PaginationSystem = ({setPage, totalPages}) => {
+export const PaginationSystem = ({setPage, totalPages, page}) => {
     const {width} = useWindowSize();
     const leftArrowClickHandler = () => {
         setPage(prev => prev - 1);
@@ -14,19 +15,12 @@ export const PaginationSystem = ({setPage, totalPages}) => {
         setPage(prev => prev + 1);
     }
     return <StyledPagination>
-        {(width >= 1280) && 
         <button onClick={leftArrowClickHandler}>
             <LefrArrow></LefrArrow>
-        </button>}
-        <button onClick={() => setPage(1)}>
-            1
         </button>
-        <button onClick={() => setPage(totalPages)}>
-            {totalPages}
-        </button>
-        {(width >= 1280) && 
+        {(width >= 1280) && <PaginationDescTop setPage={setPage} totalPages={totalPages} page={page}/>}
         <button onClick={rightArrowClickHandler}>
             <RigntArrow></RigntArrow>
-        </button>}
+        </button>
     </StyledPagination>
 }

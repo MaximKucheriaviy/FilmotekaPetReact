@@ -35,7 +35,7 @@ export const Home = ({isAutorised, userData, removeLogedUser}) => {
         {signupFormTriger && <LoginForm setLoginFormTriger={setSignupFormTriger}/>}
         <div className="container">
             <FilmList cards={cards}/>
-            <PaginationSystem totalPages={totalPages} setPage={setPage}/>
+            <PaginationSystem totalPages={totalPages} setPage={setPage} page={page}/>
         </div>
     </>
 }
