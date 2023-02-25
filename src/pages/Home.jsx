@@ -13,16 +13,18 @@ export const Home = ({isAutorised, userData, removeLogedUser}) => {
     const [signupFormTriger, setSignupFormTriger] = useState(false);
     const [cards, setCards] = useState([]);
     const [totalPages, setTotalPages] = useState(null);
+    const [page, setPage] = useState(1);
+
 
     const getFimesToCards = useCallback(async () => {
-        const result = await api.getTrendings();
+        const result = await api.getTrendings(page);
         setCards(result.results)
         setTotalPages(result.total_pages)
-    }, []);
+    }, [page]);
 
     useEffect(() => {
         getFimesToCards();
-    }, [getFimesToCards]);
+    }, [getFimesToCards, page]);
     console.log(cards);
     return<>
         <Header
@@ -33,7 +35,7 @@ export const Home = ({isAutorised, userData, removeLogedUser}) => {
         {signupFormTriger && <LoginForm setLoginFormTriger={setSignupFormTriger}/>}
         <div className="container">
             <FilmList cards={cards}/>
-            <PaginationSystem/>
+            <PaginationSystem totalPages={totalPages} setPage={setPage}/>
         </div>
     </>
 }
