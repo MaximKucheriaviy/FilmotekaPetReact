@@ -83,3 +83,30 @@ img{
   max-width: 100%;
 }
 
+.listTransitions{
+  opacity: 1;
+}
+
+.listTransitions-closed{
+  opacity: 0;
+}
+
+.listTransitions-enter{
+  opacity: 0;
+}
+
+.listTransitions-enter-active{
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 500ms;
+}
+
+.listTransitions-exit {
+  opacity: 1;
+}
+.listTransitions-exit-active {
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: 500ms;
+  transform: translateX(-50%);
+}
