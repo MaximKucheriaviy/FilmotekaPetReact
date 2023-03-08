@@ -33,6 +33,16 @@ export const PaginationDescTop = ({setPage, totalPages, page}) =>{
         }
     }
     return <>
-        {buttons.map((item, index ) => <button key={index} className={item === page ? "active" : ""} onClick={() => setPage(item)}>{item}</button>)}
+        {buttons.map((item, index ) => <button 
+        key={index} 
+        className={item === page ? "active" : ""} 
+        onClick={() => {
+            if(item === "..."){
+                return
+            }
+            setPage(item)
+        }}>
+        {item}
+        </button>)}
     </>
 }
